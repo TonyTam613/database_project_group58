@@ -61,7 +61,7 @@ CREATE TABLE booking (
     FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
 
-CREATE TABLE rooms (
+CREATE TABLE room (
 	room_id INT,
     price DECIMAL(10,2),
     capacity INT,
@@ -70,6 +70,14 @@ CREATE TABLE rooms (
     room_condition VARCHAR(5),
     hotel_id INT,
     FOREIGN KEY (hotel_id) REFERENCES hotel(hotel_id)    
+);
+
+CREATE TABLE amenities (
+	service VARCHAR(20),
+    room_id INT,
+    hotel_id INT,
+    FOREIGN KEY (room_id) REFERENCES room(room_id),
+    FOREIGN KEY (hotel_id) REFERENCES hotel(hotel_id)
 );
 
 SELECT * FROM hotels;

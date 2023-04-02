@@ -676,10 +676,10 @@ INSERT INTO room(room_id,hotel_id,price,capacity,room_view,extendability,room_co
 (586,580,59,'Single','Sea view','N0','Good condition');
 
 INSERT INTO room(room_id,hotel_id,price,capacity,room_view,extendability,room_condition) VALUES
-(586,580,59,'Single','Sea view','N0','Good condition');
+(587,580,59,'Single','Sea view','N0','Good condition');
 
 INSERT INTO room(room_id,hotel_id,price,capacity,room_view,extendability,room_condition) VALUES
-(586,580,59,'Single','Sea view','N0','Good condition');
+(588,580,59,'Single','Sea view','N0','Good condition');
 
 CREATE TRIGGER remove_room AFTER DELETE ON room 
 FOR EACH ROW
@@ -687,10 +687,10 @@ FOR EACH ROW
      SET number_of_room = number_of_room - 1
    WHERE hotel_id = OLD.hotel_id;
    
-DELETE FROM room WHERE room.room_id = 586;
+DELETE FROM room WHERE room.room_id = 588;
 
 DELIMITER $$
-CREATE TRIGGER remove_room AFTER UPDATE ON room 
+CREATE TRIGGER update_room_hotel_id AFTER UPDATE ON room 
 FOR EACH ROW
 BEGIN
 	IF OLD.hotel_id <> NEW.hotel_id THEN
@@ -704,6 +704,8 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+update room set hotel_id = 560 where room_id = 588;
 
 SELECT * FROM ROOM;
 SELECT * FROM hotel;
